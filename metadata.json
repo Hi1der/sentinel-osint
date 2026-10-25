@@ -1,0 +1,6 @@
+{
+  "name": "SENTINEL OSINT",
+  "description": "Enterprise open-source intelligence aggregation, entity correlation, and threat analysis platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

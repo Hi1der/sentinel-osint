@@ -1,0 +1,927 @@
+{
+  "cases": [
+    {
+      "id": "case_1792071646558",
+      "case_number": "CASE-2026-004",
+      "title": "real",
+      "description": "",
+      "objective": "",
+      "status": "ACTIVE",
+      "priority": "HIGH",
+      "tags": [
+        "PASSIVE-RECON",
+        "INFRASTRUCTURE"
+      ],
+      "scope": {
+        "domains": [
+          "facebook.com"
+        ],
+        "ipRanges": [],
+        "allowedCollectorTypes": [
+          "PASSIVE_DNS",
+          "CERT_TRANSPARENCY",
+          "RDAP_WHOIS",
+          "BGP_ROUTING"
+        ],
+        "notes": ""
+      },
+      "created_by": "s30408390@gmail.com",
+      "created_at": "2026-10-15T13:40:46.558Z",
+      "updated_at": "2026-10-15T13:40:46.558Z",
+      "is_demo": false
+    },
+    {
+      "id": "case_1792070276031",
+      "case_number": "CASE-2026-003",
+      "title": "Test Alpha Scope",
+      "description": "",
+      "objective": "",
+      "status": "ACTIVE",
+      "priority": "HIGH",
+      "tags": [],
+      "scope": {
+        "domains": [
+          "alpha-test.org",
+          "*.alpha-test.org"
+        ],
+        "ipRanges": [
+          "198.51.100.0/24"
+        ],
+        "allowedCollectorTypes": [
+          "PASSIVE_DNS",
+          "CERT_TRANSPARENCY",
+          "RDAP_WHOIS"
+        ],
+        "notes": ""
+      },
+      "created_by": "s30408390@gmail.com",
+      "created_at": "2026-10-15T13:17:56.031Z",
+      "updated_at": "2026-10-15T13:17:56.031Z",
+      "is_demo": false
+    },
+    {
+      "id": "case_ironshield_001",
+      "case_number": "CASE-2026-001",
+      "title": "Operation IronShield — APT Infrastructure Mapping [DEMO]",
+      "description": "Passive telemetry correlation of suspected command-and-control domains, shared ASN hosting, and expired certificate pivots.",
+      "objective": "Map DNS and TLS infrastructure without initiating active network scanning or touching private resources.",
+      "status": "ACTIVE",
+      "priority": "CRITICAL",
+      "tags": [
+        "APT-TELEMETRY",
+        "PASSIVE-DNS",
+        "TLS-CORRELATION",
+        "DEMO"
+      ],
+      "scope": {
+        "domains": [
+          "ironshield-telemetry.org",
+          "*.ironshield-telemetry.org"
+        ],
+        "ipRanges": [
+          "198.51.100.0/24"
+        ],
+        "allowedCollectorTypes": [
+          "PASSIVE_DNS",
+          "CERT_TRANSPARENCY",
+          "BGP_ROUTING",
+          "RDAP_WHOIS"
+        ],
+        "notes": "Strict scope boundaries authorized under synthetic defense lab mandate."
+      },
+      "created_by": "s30408390@gmail.com",
+      "created_at": "2026-10-10T08:05:00.000Z",
+      "updated_at": "2026-10-14T14:20:00.000Z",
+      "is_demo": true
+    },
+    {
+      "id": "case_payvault_002",
+      "case_number": "CASE-2026-002",
+      "title": "FinTech Subdomain & TLS Hygiene Audit [DEMO]",
+      "description": "Passive reconnaissance of public payment gateway infrastructure, certificate validity windows, and sub-delegation.",
+      "objective": "Identify dangling DNS CNAME records and historical SSL certificate expansions across public transparency logs.",
+      "status": "ACTIVE",
+      "priority": "HIGH",
+      "tags": [
+        "FINTECH",
+        "SUBDOMAIN-DISCOVERY",
+        "CERT-HYGIENE",
+        "DEMO"
+      ],
+      "scope": {
+        "domains": [
+          "payvault-gateway.io",
+          "*.payvault-gateway.io"
+        ],
+        "ipRanges": [
+          "192.0.2.0/24"
+        ],
+        "allowedCollectorTypes": [
+          "PASSIVE_DNS",
+          "CERT_TRANSPARENCY",
+          "RDAP_WHOIS"
+        ],
+        "notes": "Scope limited to public gateway domain FQDNs only."
+      },
+      "created_by": "s30408390@gmail.com",
+      "created_at": "2026-10-12T11:15:00.000Z",
+      "updated_at": "2026-10-14T16:45:00.000Z",
+      "is_demo": true
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev-dns-1792071868475-a-875",
+      "case_id": "case_1792071646558",
+      "collector_id": "col_doh_cloudflare",
+      "source_provider": "Cloudflare DNS over HTTPS",
+      "source_url": "https://cloudflare-dns.com/dns-query?name=facebook.com&type=A",
+      "target_identifier": "facebook.com",
+      "retrieval_timestamp": "2026-10-15T13:44:28.420Z",
+      "observation_timestamp": "2026-10-15T13:44:28.420Z",
+      "normalized_value": "A: 157.240.31.35 (TTL: 48s)",
+      "raw_payload": {
+        "Status": 0,
+        "TC": false,
+        "RD": true,
+        "RA": true,
+        "AD": false,
+        "CD": false,
+        "Question": [
+          {
+            "name": "facebook.com",
+            "type": 1
+          }
+        ],
+        "Answer": [
+          {
+            "name": "facebook.com",
+            "type": 1,
+            "TTL": 48,
+            "data": "157.240.31.35"
+          }
+        ]
+      },
+      "content_hash": "d101aaeea6e52378be9ec0c403b7c83ba3824dfb51a85e4a3ab6ed557c34fb92",
+      "confidence_score": 0.99,
+      "verification_status": "VERIFIED",
+      "is_demo": false
+    },
+    {
+      "id": "ev-dns-1792070865549-txt-49",
+      "case_id": "case_ironshield_001",
+      "collector_id": "col_doh_cloudflare",
+      "source_provider": "Cloudflare DNS over HTTPS",
+      "source_url": "https://cloudflare-dns.com/dns-query?name=ironshield-telemetry.org&type=TXT",
+      "target_identifier": "ironshield-telemetry.org",
+      "retrieval_timestamp": "2026-10-15T13:27:45.529Z",
+      "observation_timestamp": "2026-10-15T13:27:45.529Z",
+      "normalized_value": "NXDOMAIN (Domain does not exist according to authoritative zone)",
+      "raw_payload": {
+        "Status": 3,
+        "TC": false,
+        "RD": true,
+        "RA": true,
+        "AD": false,
+        "CD": false,
+        "Question": [
+          {
+            "name": "ironshield-telemetry.org",
+            "type": 16
+          }
+        ],
+        "Authority": [
+          {
+            "name": "org",
+            "type": 6,
+            "TTL": 3600,
+            "data": "a0.org.afilias-nst.info. hostmaster.donuts.email. 1792070388 7200 900 1209600 3600"
+          }
+        ]
+      },
+      "content_hash": "ed1d1468378b2c7869b6dbee8e9c3fb021b1371d4a9150c4fd8f2088d3df2815",
+      "confidence_score": 0.99,
+      "verification_status": "VERIFIED",
+      "is_demo": false
+    },
+    {
+      "id": "ev-dns-1792070865549-a-495",
+      "case_id": "case_ironshield_001",
+      "collector_id": "col_doh_cloudflare",
+      "source_provider": "Cloudflare DNS over HTTPS",
+      "source_url": "https://cloudflare-dns.com/dns-query?name=ironshield-telemetry.org&type=A",
+      "target_identifier": "ironshield-telemetry.org",
+      "retrieval_timestamp": "2026-10-15T13:27:45.478Z",
+      "observation_timestamp": "2026-10-15T13:27:45.478Z",
+      "normalized_value": "NXDOMAIN (Domain does not exist according to authoritative zone)",
+      "raw_payload": {
+        "Status": 3,
+        "TC": false,
+        "RD": true,
+        "RA": true,
+        "AD": false,
+        "CD": false,
+        "Question": [
+          {
+            "name": "ironshield-telemetry.org",
+            "type": 1
+          }
+        ],
+        "Authority": [
+          {
+            "name": "org",
+            "type": 6,
+            "TTL": 3600,
+            "data": "a0.org.afilias-nst.info. hostmaster.donuts.email. 1792070388 7200 900 1209600 3600"
+          }
+        ]
+      },
+      "content_hash": "ed1d1468378b2c7869b6dbee8e9c3fb021b1371d4a9150c4fd8f2088d3df2815",
+      "confidence_score": 0.99,
+      "verification_status": "VERIFIED",
+      "is_demo": false
+    },
+    {
+      "id": "ev-demo-001",
+      "case_id": "case_ironshield_001",
+      "collector_id": "col_doh_cloudflare",
+      "source_provider": "Cloudflare 1.1.1.1 DoH",
+      "source_url": "https://cloudflare-dns.com/dns-query?name=ironshield-telemetry.org&type=A",
+      "target_identifier": "ironshield-telemetry.org",
+      "retrieval_timestamp": "2026-10-11T09:22:15.000Z",
+      "observation_timestamp": "2026-10-11T09:22:15.000Z",
+      "normalized_value": "198.51.100.42",
+      "raw_payload": {
+        "Status": 0,
+        "TC": false,
+        "RD": true,
+        "RA": true,
+        "AD": true,
+        "CD": false,
+        "Question": [
+          {
+            "name": "ironshield-telemetry.org",
+            "type": 1
+          }
+        ],
+        "Answer": [
+          {
+            "name": "ironshield-telemetry.org",
+            "type": 1,
+            "TTL": 300,
+            "data": "198.51.100.42"
+          }
+        ]
+      },
+      "content_hash": "3a4f89d0c2e4b5a6871982b638a1923cb49a7102e34589d102e3b4a5c6d7e8f9",
+      "confidence_score": 0.99,
+      "verification_status": "DEMO",
+      "is_demo": true
+    },
+    {
+      "id": "ev-demo-002",
+      "case_id": "case_ironshield_001",
+      "collector_id": "col_crt_sh",
+      "source_provider": "Sectigo crt.sh Certificate Transparency",
+      "source_url": "https://crt.sh/?q=ironshield-telemetry.org&output=json",
+      "target_identifier": "ironshield-telemetry.org",
+      "retrieval_timestamp": "2026-10-11T09:25:30.000Z",
+      "observation_timestamp": "2026-09-01T12:00:00.000Z",
+      "normalized_value": "c2-edge.ironshield-telemetry.org",
+      "raw_payload": {
+        "issuer_ca_id": 16418,
+        "issuer_name": "C=US, O=Let's Encrypt, CN=R3",
+        "common_name": "ironshield-telemetry.org",
+        "name_value": "ironshield-telemetry.org\nc2-edge.ironshield-telemetry.org\napi.ironshield-telemetry.org",
+        "id": 98124501,
+        "entry_timestamp": "2026-09-01T12:00:00.000Z",
+        "not_before": "2026-09-01T11:00:00.000Z",
+        "not_after": "2026-11-30T11:00:00.000Z"
+      },
+      "content_hash": "9f8e7d6c5b4a3928170e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c",
+      "confidence_score": 0.95,
+      "verification_status": "DEMO",
+      "is_demo": true
+    },
+    {
+      "id": "ev-demo-003",
+      "case_id": "case_ironshield_001",
+      "collector_id": "col_bgpview",
+      "source_provider": "BGPView Public Routing API",
+      "source_url": "https://api.bgpview.io/ip/198.51.100.42",
+      "target_identifier": "198.51.100.42",
+      "retrieval_timestamp": "2026-10-11T09:30:10.000Z",
+      "observation_timestamp": "2026-10-11T09:30:10.000Z",
+      "normalized_value": "AS64496 - Example Transit Corp",
+      "raw_payload": {
+        "ip": "198.51.100.42",
+        "ptr_record": "node-42.transit.example.net",
+        "asn": {
+          "asn": 64496,
+          "name": "EXAMPLE-TRANSIT",
+          "description": "Example Autonomous System",
+          "country_code": "US"
+        },
+        "maxmind": {
+          "country_code": "US",
+          "city": "Reston"
+        }
+      },
+      "content_hash": "5d4c3b2a10e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3",
+      "confidence_score": 0.94,
+      "verification_status": "DEMO",
+      "is_demo": true
+    }
+  ],
+  "entities": [
+    {
+      "id": "ent-demo-1",
+      "case_id": "case_ironshield_001",
+      "entity_type": "DOMAIN",
+      "canonical_value": "ironshield-telemetry.org",
+      "display_value": "ironshield-telemetry.org",
+      "first_seen": "2026-09-01T12:00:00.000Z",
+      "last_seen": "2026-10-15T13:27:45.549Z",
+      "source_ids": [
+        "col_doh_cloudflare",
+        "col_crt_sh"
+      ],
+      "confidence_score": 0.99,
+      "metadata": {
+        "registrar": "Porkbun LLC [DEMO]",
+        "registrant_country": "IS"
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent-demo-2",
+      "case_id": "case_ironshield_001",
+      "entity_type": "SUBDOMAIN",
+      "canonical_value": "c2-edge.ironshield-telemetry.org",
+      "display_value": "c2-edge.ironshield-telemetry.org",
+      "first_seen": "2026-09-01T12:00:00.000Z",
+      "last_seen": "2026-10-11T09:25:30.000Z",
+      "source_ids": [
+        "col_crt_sh"
+      ],
+      "confidence_score": 0.95,
+      "metadata": {
+        "source": "CT Log SAN"
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent-demo-3",
+      "case_id": "case_ironshield_001",
+      "entity_type": "IP_ADDRESS",
+      "canonical_value": "198.51.100.42",
+      "display_value": "198.51.100.42",
+      "first_seen": "2026-10-11T09:22:15.000Z",
+      "last_seen": "2026-10-11T09:22:15.000Z",
+      "source_ids": [
+        "col_doh_cloudflare"
+      ],
+      "confidence_score": 0.98,
+      "metadata": {
+        "ptr": "node-42.transit.example.net",
+        "version": "IPv4"
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent-demo-4",
+      "case_id": "case_ironshield_001",
+      "entity_type": "ASN",
+      "canonical_value": "AS64496",
+      "display_value": "AS64496 (Example Transit Corp)",
+      "first_seen": "2026-10-11T09:30:10.000Z",
+      "last_seen": "2026-10-11T09:30:10.000Z",
+      "source_ids": [
+        "col_bgpview"
+      ],
+      "confidence_score": 0.95,
+      "metadata": {
+        "country": "US",
+        "prefix": "198.51.100.0/24"
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent-demo-5",
+      "case_id": "case_ironshield_001",
+      "entity_type": "SSL_CERTIFICATE",
+      "canonical_value": "SHA256:4b91012a8f90c10291e0a817b290192e10a8b910c2918e0a9b817c2901e9a8b1",
+      "display_value": "Let's Encrypt R3 (Valid: Sep 2026 - Nov 2026)",
+      "first_seen": "2026-09-01T11:00:00.000Z",
+      "last_seen": "2026-10-11T09:25:30.000Z",
+      "source_ids": [
+        "col_crt_sh"
+      ],
+      "confidence_score": 0.96,
+      "metadata": {
+        "issuer": "Let's Encrypt",
+        "sans": [
+          "ironshield-telemetry.org",
+          "c2-edge.ironshield-telemetry.org"
+        ]
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent_domain_636173655f69726f",
+      "case_id": "case_ironshield_001",
+      "entity_type": "DOMAIN",
+      "canonical_value": "ironshield-telemetry.org",
+      "display_value": "ironshield-telemetry.org",
+      "first_seen": "2026-09-01T12:00:00.000Z",
+      "last_seen": "2026-10-15T13:27:45.529Z",
+      "source_ids": [
+        "col_doh_cloudflare",
+        "col_crt_sh"
+      ],
+      "confidence_score": 0.99,
+      "metadata": {
+        "collector": "col_crt_sh",
+        "provider": "Sectigo crt.sh Certificate Transparency"
+      },
+      "is_demo": false
+    },
+    {
+      "id": "ent_ip_address_636173655f69726f",
+      "case_id": "case_ironshield_001",
+      "entity_type": "IP_ADDRESS",
+      "canonical_value": "198.51.100.42",
+      "display_value": "198.51.100.42",
+      "first_seen": "2026-10-11T09:22:15.000Z",
+      "last_seen": "2026-10-11T09:22:15.000Z",
+      "source_ids": [
+        "col_doh_cloudflare"
+      ],
+      "confidence_score": 0.99,
+      "metadata": {
+        "version": "IPv4",
+        "origin_domain": "ironshield-telemetry.org",
+        "ttl": 300
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent_subdomain_636173655f69726f",
+      "case_id": "case_ironshield_001",
+      "entity_type": "SUBDOMAIN",
+      "canonical_value": "198.51.100.42",
+      "display_value": "198.51.100.42",
+      "first_seen": "2026-10-11T09:30:10.000Z",
+      "last_seen": "2026-10-11T09:30:10.000Z",
+      "source_ids": [
+        "col_bgpview"
+      ],
+      "confidence_score": 0.94,
+      "metadata": {
+        "collector": "col_bgpview",
+        "provider": "BGPView Public Routing API"
+      },
+      "is_demo": true
+    },
+    {
+      "id": "ent-1792071868475-ip-980",
+      "case_id": "case_1792071646558",
+      "entity_type": "IP_ADDRESS",
+      "canonical_value": "157.240.31.35",
+      "display_value": "157.240.31.35",
+      "first_seen": "2026-10-15T13:44:28.475Z",
+      "last_seen": "2026-10-15T13:44:28.475Z",
+      "source_ids": [
+        "col_doh_cloudflare"
+      ],
+      "confidence_score": 0.99,
+      "metadata": {
+        "version": "IPv4",
+        "origin_domain": "facebook.com"
+      },
+      "is_demo": false
+    },
+    {
+      "id": "ent-1792071868475-dom-584",
+      "case_id": "case_1792071646558",
+      "entity_type": "DOMAIN",
+      "canonical_value": "facebook.com",
+      "display_value": "facebook.com",
+      "first_seen": "2026-10-15T13:44:28.475Z",
+      "last_seen": "2026-10-15T13:44:28.475Z",
+      "source_ids": [
+        "col_doh_cloudflare"
+      ],
+      "confidence_score": 0.99,
+      "metadata": {
+        "source": "DoH Authoritative Query"
+      },
+      "is_demo": false
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-demo-1",
+      "case_id": "case_ironshield_001",
+      "source_entity_id": "ent-demo-1",
+      "target_entity_id": "ent-demo-2",
+      "relationship_type": "HAS_SUBDOMAIN",
+      "first_seen": "2026-09-01T12:00:00.000Z",
+      "last_seen": "2026-10-11T09:25:30.000Z",
+      "confidence_score": 0.95,
+      "evidence_ids": [
+        "ev-demo-002"
+      ],
+      "is_hypothesis": false,
+      "scoring_explanation": "Direct SAN extraction from CT certificate log entry #98124501.",
+      "is_demo": true
+    },
+    {
+      "id": "rel-demo-2",
+      "case_id": "case_ironshield_001",
+      "source_entity_id": "ent-demo-1",
+      "target_entity_id": "ent-demo-3",
+      "relationship_type": "RESOLVES_TO",
+      "first_seen": "2026-10-11T09:22:15.000Z",
+      "last_seen": "2026-10-11T09:22:15.000Z",
+      "confidence_score": 0.99,
+      "evidence_ids": [
+        "ev-demo-001"
+      ],
+      "is_hypothesis": false,
+      "scoring_explanation": "Authoritative DNS A record resolution via Cloudflare DoH (TTL: 300).",
+      "is_demo": true
+    },
+    {
+      "id": "rel-demo-3",
+      "case_id": "case_ironshield_001",
+      "source_entity_id": "ent-demo-3",
+      "target_entity_id": "ent-demo-4",
+      "relationship_type": "BELONGS_TO_ASN",
+      "first_seen": "2026-10-11T09:30:10.000Z",
+      "last_seen": "2026-10-11T09:30:10.000Z",
+      "confidence_score": 0.94,
+      "evidence_ids": [
+        "ev-demo-003"
+      ],
+      "is_hypothesis": false,
+      "scoring_explanation": "BGP routing table prefix announcement 198.51.100.0/24.",
+      "is_demo": true
+    },
+    {
+      "id": "rel-demo-4",
+      "case_id": "case_ironshield_001",
+      "source_entity_id": "ent-demo-1",
+      "target_entity_id": "ent-demo-5",
+      "relationship_type": "PRESENTS_CERTIFICATE",
+      "first_seen": "2026-09-01T11:00:00.000Z",
+      "last_seen": "2026-10-11T09:25:30.000Z",
+      "confidence_score": 0.96,
+      "evidence_ids": [
+        "ev-demo-002"
+      ],
+      "is_hypothesis": false,
+      "scoring_explanation": "Certificate transparency public log issuance.",
+      "is_demo": true
+    },
+    {
+      "id": "rel_636173655f69726f",
+      "case_id": "case_ironshield_001",
+      "source_entity_id": "ent_domain_636173655f69726f",
+      "target_entity_id": "ent_ip_address_636173655f69726f",
+      "relationship_type": "RESOLVES_TO",
+      "first_seen": "2026-10-11T09:22:15.000Z",
+      "last_seen": "2026-10-11T09:22:15.000Z",
+      "confidence_score": 0.99,
+      "evidence_ids": [
+        "ev-demo-001"
+      ],
+      "is_hypothesis": false,
+      "scoring_explanation": "Authoritative DNS resolution from ironshield-telemetry.org to 198.51.100.42 via Cloudflare 1.1.1.1 DoH. Evidence ID: ev-demo-001",
+      "metadata": {
+        "ttl": 300,
+        "ip_version": "IPv4"
+      },
+      "is_demo": true
+    }
+  ],
+  "jobs": [
+    {
+      "job_id": "job_dns_1792071868419",
+      "case_id": "case_1792071646558",
+      "target_identifier": "facebook.com",
+      "target_type": "DOMAIN",
+      "collectors_selected": [
+        "col_doh_cloudflare"
+      ],
+      "status": "COMPLETED",
+      "progress": 100,
+      "logs": [
+        "[2026-10-15T13:44:28.419Z] Initiated passive DNS collection for \"facebook.com\" under case CASE-2026-004",
+        "[2026-10-15T13:44:28.419Z] Scope authorized: verified against facebook.com",
+        "[2026-10-15T13:44:28.419Z] Target resolver: col_doh_cloudflare | Record types: A",
+        "[13:44:28] A: A: 157.240.31.35 (TTL: 48s)"
+      ],
+      "started_at": "2026-10-15T13:44:28.419Z",
+      "created_by": "s30408390@gmail.com",
+      "is_demo": false,
+      "completed_at": "2026-10-15T13:44:28.475Z",
+      "results_summary": {
+        "entities_discovered": 2,
+        "evidence_collected": 1,
+        "relations_formed": 0
+      }
+    },
+    {
+      "job_id": "job_dns_1792070865477",
+      "case_id": "case_ironshield_001",
+      "target_identifier": "ironshield-telemetry.org",
+      "target_type": "DOMAIN",
+      "collectors_selected": [
+        "col_doh_cloudflare"
+      ],
+      "status": "COMPLETED",
+      "progress": 100,
+      "logs": [
+        "[2026-10-15T13:27:45.477Z] Initiated passive DNS collection for \"ironshield-telemetry.org\" under case CASE-2026-001",
+        "[2026-10-15T13:27:45.477Z] Scope authorized: verified against ironshield-telemetry.org, *.ironshield-telemetry.org",
+        "[2026-10-15T13:27:45.477Z] Target resolver: col_doh_cloudflare | Record types: A, TXT",
+        "[13:27:45] A: NXDOMAIN (Domain does not exist according to authoritative zone)",
+        "[13:27:45] TXT: NXDOMAIN (Domain does not exist according to authoritative zone)"
+      ],
+      "started_at": "2026-10-15T13:27:45.477Z",
+      "created_by": "s30408390@gmail.com",
+      "is_demo": false,
+      "completed_at": "2026-10-15T13:27:45.549Z",
+      "results_summary": {
+        "entities_discovered": 1,
+        "evidence_collected": 2,
+        "relations_formed": 0
+      }
+    },
+    {
+      "job_id": "job_demo_101",
+      "case_id": "case_ironshield_001",
+      "target_identifier": "ironshield-telemetry.org",
+      "target_type": "DOMAIN",
+      "collectors_selected": [
+        "col_doh_cloudflare",
+        "col_crt_sh",
+        "col_bgpview"
+      ],
+      "status": "COMPLETED",
+      "progress": 100,
+      "logs": [
+        "[09:22:10] Pre-flight: Validated target in scope: ironshield-telemetry.org",
+        "[09:22:15] PASSIVE_DNS: Query Cloudflare DoH returned 1 A record (198.51.100.42)",
+        "[09:25:30] CERT_TRANSPARENCY: crt.sh returned 3 SAN names and Let's Encrypt issuer",
+        "[09:30:10] BGP_ROUTING: BGPView confirmed ASN AS64496 prefix 198.51.100.0/24",
+        "[09:30:12] Job finalized: 5 entities correlated, 4 edges established."
+      ],
+      "started_at": "2026-10-11T09:22:10.000Z",
+      "completed_at": "2026-10-11T09:30:12.000Z",
+      "created_by": "s30408390@gmail.com",
+      "results_summary": {
+        "entities_discovered": 5,
+        "evidence_collected": 3,
+        "relations_formed": 4
+      },
+      "is_demo": true
+    }
+  ],
+  "auditLogs": [
+    {
+      "log_id": 1,
+      "user_id": "usr_sys_00",
+      "action": "SYSTEM_INITIALIZATION",
+      "target": "PLATFORM_BOOTSTRAP",
+      "timestamp": "2026-10-10T08:00:00.000Z",
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "current_hash": "3e82a3279542ecd21179aade4832cfde7729ac22455e22fd29776e9db115993d",
+      "details": {
+        "version": "1.0.0-thesis",
+        "mode": "STRICT_PASSIVE"
+      }
+    },
+    {
+      "log_id": 2,
+      "user_id": "usr_sec_lead",
+      "action": "CASE_CREATED",
+      "target": "CASE-2026-001",
+      "timestamp": "2026-10-10T08:05:00.000Z",
+      "previous_hash": "3e82a3279542ecd21179aade4832cfde7729ac22455e22fd29776e9db115993d",
+      "current_hash": "b377310dcad14f70521b47a8f117fd8e12fd311a1f369f3d3250b0dc1df9bbd1",
+      "details": {
+        "title": "Operation IronShield — APT Infrastructure Mapping [DEMO]"
+      }
+    },
+    {
+      "log_id": 3,
+      "user_id": "s30408390@gmail.com",
+      "action": "CASE_CREATED",
+      "target": "CASE-2026-003",
+      "timestamp": "2026-10-15T13:17:56.031Z",
+      "previous_hash": "b377310dcad14f70521b47a8f117fd8e12fd311a1f369f3d3250b0dc1df9bbd1",
+      "current_hash": "becc6cc406b352da5c280f7f58c3538fec2af0202a364212ab84b9caec366325",
+      "details": {
+        "case_id": "case_1792070276031",
+        "title": "Test Alpha Scope",
+        "scope_domains": [
+          "alpha-test.org",
+          "*.alpha-test.org"
+        ]
+      }
+    },
+    {
+      "log_id": 4,
+      "user_id": "s30408390@gmail.com",
+      "action": "JOB_REJECTED_OUT_OF_SCOPE",
+      "target": "unauthorized-target.com",
+      "timestamp": "2026-10-15T13:18:07.555Z",
+      "previous_hash": "becc6cc406b352da5c280f7f58c3538fec2af0202a364212ab84b9caec366325",
+      "current_hash": "8bf816bd006d9ac51cd221c699a3b48f632efef81e515dc6359f9dab96abaea8",
+      "details": {
+        "case_id": "case_1792070276031",
+        "reason": "SCOPE VIOLATION: Target \"unauthorized-target.com\" is not covered by the authorized domains (alpha-test.org, *.alpha-test.org) or IP ranges (198.51.100.0/24). Outbound collection is rejected."
+      }
+    },
+    {
+      "log_id": 5,
+      "user_id": "s30408390@gmail.com",
+      "action": "DNS_COLLECTION_STARTED",
+      "target": "ironshield-telemetry.org",
+      "timestamp": "2026-10-15T13:27:45.478Z",
+      "previous_hash": "8bf816bd006d9ac51cd221c699a3b48f632efef81e515dc6359f9dab96abaea8",
+      "current_hash": "4e9cad81b91c04ce986bb87d12f812b8bbc451fa490b9072b06f6a44bbda5bbf",
+      "details": {
+        "job_id": "job_dns_1792070865477",
+        "case_id": "case_ironshield_001",
+        "case_number": "CASE-2026-001",
+        "record_types": [
+          "A",
+          "TXT"
+        ],
+        "resolver": "col_doh_cloudflare"
+      }
+    },
+    {
+      "log_id": 6,
+      "user_id": "s30408390@gmail.com",
+      "action": "DNS_COLLECTION_COMPLETED",
+      "target": "ironshield-telemetry.org",
+      "timestamp": "2026-10-15T13:27:45.550Z",
+      "previous_hash": "4e9cad81b91c04ce986bb87d12f812b8bbc451fa490b9072b06f6a44bbda5bbf",
+      "current_hash": "9a695074ac9051f72c86a0f63739c0470cb687841c045618e8942bea81cc0c3c",
+      "details": {
+        "job_id": "job_dns_1792070865477",
+        "status": "COMPLETED",
+        "evidence_count": 2,
+        "successful_queries": 2,
+        "failed_queries": 0
+      }
+    },
+    {
+      "log_id": 7,
+      "user_id": "s30408390@gmail.com",
+      "action": "DNS_QUERY_REJECTED_OUT_OF_SCOPE",
+      "target": "google.com",
+      "timestamp": "2026-10-15T13:27:51.011Z",
+      "previous_hash": "9a695074ac9051f72c86a0f63739c0470cb687841c045618e8942bea81cc0c3c",
+      "current_hash": "738b88f0b67c1eaac44be9172b0631c0a383fc3390978dcb51b21f3aed667f55",
+      "details": {
+        "case_id": "case_ironshield_001",
+        "case_number": "CASE-2026-001",
+        "reason": "OUT_OF_SCOPE: Target domain \"google.com\" is not authorized by case scope domains (ironshield-telemetry.org, *.ironshield-telemetry.org). Query rejected before outbound connection."
+      }
+    },
+    {
+      "log_id": 8,
+      "user_id": "s30408390@gmail.com",
+      "action": "CASE_CREATED",
+      "target": "CASE-2026-004",
+      "timestamp": "2026-10-15T13:40:46.558Z",
+      "previous_hash": "738b88f0b67c1eaac44be9172b0631c0a383fc3390978dcb51b21f3aed667f55",
+      "current_hash": "3a9cb7669837268da50c7108603a72cc9a66a6f25f92eeff92b63d590729c506",
+      "details": {
+        "case_id": "case_1792071646558",
+        "title": "real",
+        "scope_domains": [
+          "facebook.com"
+        ]
+      }
+    },
+    {
+      "log_id": 9,
+      "user_id": "s30408390@gmail.com",
+      "action": "DNS_QUERY_REJECTED_OUT_OF_SCOPE",
+      "target": "google.com",
+      "timestamp": "2026-10-15T13:44:24.412Z",
+      "previous_hash": "3a9cb7669837268da50c7108603a72cc9a66a6f25f92eeff92b63d590729c506",
+      "current_hash": "bdd2614c2dd4291b19d42393469c074334020c703630ace6298952a2e3732d19",
+      "details": {
+        "case_id": "case_1792071646558",
+        "case_number": "CASE-2026-004",
+        "reason": "OUT_OF_SCOPE: Target domain \"google.com\" is not authorized by case scope domains (facebook.com). Query rejected before outbound connection."
+      }
+    },
+    {
+      "log_id": 10,
+      "user_id": "s30408390@gmail.com",
+      "action": "DNS_COLLECTION_STARTED",
+      "target": "facebook.com",
+      "timestamp": "2026-10-15T13:44:28.419Z",
+      "previous_hash": "bdd2614c2dd4291b19d42393469c074334020c703630ace6298952a2e3732d19",
+      "current_hash": "0d3bc6d5dd75a90f66ffee1a9c0cc666adf164f48addec2ed5697dc35e37bdcb",
+      "details": {
+        "job_id": "job_dns_1792071868419",
+        "case_id": "case_1792071646558",
+        "case_number": "CASE-2026-004",
+        "record_types": [
+          "A"
+        ],
+        "resolver": "col_doh_cloudflare"
+      }
+    },
+    {
+      "log_id": 11,
+      "user_id": "s30408390@gmail.com",
+      "action": "DNS_COLLECTION_COMPLETED",
+      "target": "facebook.com",
+      "timestamp": "2026-10-15T13:44:28.475Z",
+      "previous_hash": "0d3bc6d5dd75a90f66ffee1a9c0cc666adf164f48addec2ed5697dc35e37bdcb",
+      "current_hash": "19b718c9a806ee62a2d175832670e0c82fe59b7549d104af5f264a1fa5ff1373",
+      "details": {
+        "job_id": "job_dns_1792071868419",
+        "status": "COMPLETED",
+        "evidence_count": 1,
+        "successful_queries": 1,
+        "failed_queries": 0
+      }
+    },
+    {
+      "log_id": 12,
+      "user_id": "s30408390@gmail.com",
+      "action": "EXPORT_GENERATED",
+      "target": "CASE-2026-001",
+      "timestamp": "2026-10-15T13:44:52.888Z",
+      "previous_hash": "19b718c9a806ee62a2d175832670e0c82fe59b7549d104af5f264a1fa5ff1373",
+      "current_hash": "7ebba39abf257ce1016b66a0316581587d05162cabd7b9f8d3c9efc8fee06b99",
+      "details": {
+        "format": "JSON"
+      }
+    },
+    {
+      "log_id": 13,
+      "user_id": "s30408390@gmail.com",
+      "action": "EXPORT_GENERATED",
+      "target": "case_ironshield_001",
+      "timestamp": "2026-10-15T13:44:55.582Z",
+      "previous_hash": "7ebba39abf257ce1016b66a0316581587d05162cabd7b9f8d3c9efc8fee06b99",
+      "current_hash": "ab85a67c5df5e3f530b886e111fa900d9b879e7bb0e576ef03122b44748de578",
+      "details": {
+        "format": "CSV"
+      }
+    },
+    {
+      "log_id": 14,
+      "user_id": "s30408390@gmail.com",
+      "action": "EXPORT_GENERATED",
+      "target": "CASE-2026-001",
+      "timestamp": "2026-10-15T13:44:58.736Z",
+      "previous_hash": "ab85a67c5df5e3f530b886e111fa900d9b879e7bb0e576ef03122b44748de578",
+      "current_hash": "b1d2b29a4ba6037cf949b709c8ce0273e936d967b563d4945542057b73b35fc3",
+      "details": {
+        "format": "STIX_2.1"
+      }
+    },
+    {
+      "log_id": 15,
+      "user_id": "s30408390@gmail.com",
+      "action": "ENTITIES_CORRELATED",
+      "target": "CASE-2026-001",
+      "timestamp": "2026-10-16T13:27:44.229Z",
+      "previous_hash": "b1d2b29a4ba6037cf949b709c8ce0273e936d967b563d4945542057b73b35fc3",
+      "current_hash": "c5aafbd33efd065ad8e5c8a9cf8932ffd185591cfe045dd935b5affb30d8681b",
+      "details": {
+        "case_id": "case_ironshield_001",
+        "new_entities": 3,
+        "new_relationships": 1,
+        "total_entities": 8,
+        "total_relationships": 5
+      }
+    },
+    {
+      "log_id": 16,
+      "user_id": "s30408390@gmail.com",
+      "action": "RDAP_COLLECTION_REJECTED_OUT_OF_SCOPE",
+      "target": "defense-corp.org",
+      "timestamp": "2026-10-16T14:57:10.926Z",
+      "previous_hash": "c5aafbd33efd065ad8e5c8a9cf8932ffd185591cfe045dd935b5affb30d8681b",
+      "current_hash": "8851464af8f70d65eddc5d3e1b7fbf6788d97a6b3b8c86ac9f62fc0c8295cb54",
+      "details": {
+        "case_id": "case_ironshield_001",
+        "reason": "SCOPE VIOLATION: Target \"defense-corp.org\" is not covered by the authorized domains (ironshield-telemetry.org, *.ironshield-telemetry.org) or IP ranges (198.51.100.0/24). Outbound collection is rejected."
+      }
+    }
+  ]
+}
